@@ -53,6 +53,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ***
 
+# Create component without file .spec (--skipTests)
+```javascript
+ng generate component components/template --skipTests
+```
+or
+```javascript
+ng g c components/template --skipTests
+```
+
 [npm-badge]: https://img.shields.io/badge/npm-v6.14.4-brightgreen
 [npm-url]: https://www.npmjs.com
 [node-badge]: https://img.shields.io/badge/nodejs-v12.16.1-brightgreen
