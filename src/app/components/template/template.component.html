@@ -1,14 +1,15 @@
 <h4>Formularios <small> Template </small></h4>
 <hr>
 
-<form autocomplete="off" (ngSubmit)="guardar(formtemplate)" #formtemplate="ngForm">
+<form autocomplete="off" (ngSubmit)="guardar(formTemplate)" #formTemplate="ngForm">
 
     <div>
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Nombre" name="firstName" [(ngModel)]="firstName" minlength="5" required>
+                <input class="form-control" type="text" placeholder="Nombre" name="firstName" [(ngModel)]="user.firstName" minlength="5" required>
+                <!-- <span *ngIf="formTemplate.submitted && formTemplate.controls['firstName'].errors" class="badge badge-pill badge-danger">Danger</span> -->
             </div>
         </div>
 

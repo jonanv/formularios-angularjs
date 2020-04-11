@@ -9,12 +9,22 @@ import { NgForm } from '@angular/forms';
 })
 export class TemplateComponent implements OnInit {
 
+  user = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   guardar(formTemplate: NgForm) {
+    if(formTemplate.invalid) {
+      return;
+    }
+
     console.log(formTemplate.value);
   }
 
