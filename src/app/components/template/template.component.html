@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Apellido" name="lastName" [ngModel]="user.lastName" maxlength="5" required [class.is-invalid]="lastName.invalid && lastName.touched" #lastName="ngModel">
+                <input class="form-control" type="text" placeholder="Apellido" name="lastName" [ngModel]="user.lastName" minlength="5" required [class.is-invalid]="lastName.invalid && lastName.touched" #lastName="ngModel">
                 <span *ngIf="formTemplate.submitted && formTemplate.controls['lastName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
             </div>
         </div>
@@ -34,9 +34,10 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">País</label>
         <div class="col-8">
-            <select class="form-control" name="country" [ngModel]="user.country" required [disabled]="countries.length === 0">
+            <select class="form-control" name="country" [ngModel]="user.country" required [disabled]="countries.length === 0" [class.is-invalid]="country.invalid && country.touched" #country="ngModel">
                 <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
             </select>
+            <span *ngIf="formTemplate.submitted && formTemplate.controls['country'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">El país es obligatorio</span>
         </div>
     </div>
 
