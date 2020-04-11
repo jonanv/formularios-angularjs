@@ -21,9 +21,9 @@ export class TemplateComponent implements OnInit {
   }
 
   guardar(formTemplate: NgForm) {
-    if(formTemplate.invalid) {
-      return;
-    }
+    // if(formTemplate.invalid) {
+    //   return;
+    // }
 
     console.log(formTemplate.value);
   }

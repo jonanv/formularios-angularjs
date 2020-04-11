@@ -8,7 +8,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Nombre" name="firstName" [(ngModel)]="user.firstName" minlength="5" required>
+                <input class="form-control" type="text" placeholder="Nombre" name="firstName" [ngModel]="user.firstName" minlength="5" required [class.is-invalid]="firstName.invalid && firstName.touched" #firstName="ngModel">
                 <!-- <span *ngIf="formTemplate.submitted && formTemplate.controls['firstName'].errors" class="badge badge-pill badge-danger">Danger</span> -->
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Apellido" name="lastName" [(ngModel)]="lastName" required>
+                <input class="form-control" type="text" placeholder="Apellido" name="lastName" [ngModel]="user.lastName" maxlength="5" required [class.is-invalid]="lastName.invalid && lastName.touched" #lastName="ngModel">
             </div>
         </div>
 
@@ -25,7 +25,7 @@
     <div class="form-group row">
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-8">
-            <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="email" email required>
+            <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [ngModel]="user.email" email required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-invalid]="email.invalid && email.touched" #email="ngModel">
         </div>
     </div>
 
@@ -33,6 +33,7 @@
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
             <button type="submit" class="btn btn-outline-primary btn-block">
+              <i class="fas fa-save"></i>
               Guardar
             </button>
         </div>
