@@ -62,6 +62,19 @@ or
 ng g c components/template --skipTests
 ```
 
+# Server local
+install global ```sudo npm i -g http-server```
+
+deploy in ```/login-angularjs/dist/login-angularjs/```
+
+```javascript
+http-server
+```
+or
+```javascript
+http-server -o
+```
+
 [npm-badge]: https://img.shields.io/badge/npm-v6.14.4-brightgreen
 [npm-url]: https://www.npmjs.com
 [node-badge]: https://img.shields.io/badge/nodejs-v12.16.1-brightgreen

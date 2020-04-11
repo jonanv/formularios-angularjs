@@ -9,7 +9,7 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Nombre" name="firstName" [ngModel]="user.firstName" minlength="5" required [class.is-invalid]="firstName.invalid && firstName.touched" #firstName="ngModel">
-                <!-- <span *ngIf="formTemplate.submitted && formTemplate.controls['firstName'].errors" class="badge badge-pill badge-danger">Danger</span> -->
+                <span *ngIf="formTemplate.submitted && formTemplate.controls['firstName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
             </div>
         </div>
 
@@ -17,6 +17,7 @@
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Apellido" name="lastName" [ngModel]="user.lastName" maxlength="5" required [class.is-invalid]="lastName.invalid && lastName.touched" #lastName="ngModel">
+                <span *ngIf="formTemplate.submitted && formTemplate.controls['lastName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
             </div>
         </div>
 
@@ -26,6 +27,7 @@
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-8">
             <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [ngModel]="user.email" email required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-invalid]="email.invalid && email.touched" #email="ngModel">
+            <span *ngIf="formTemplate.submitted && formTemplate.controls['email'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">El correo es obligatorio</span>
         </div>
     </div>
 
