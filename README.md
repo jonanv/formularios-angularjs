@@ -62,6 +62,15 @@ or
 ng g c components/template --skipTests
 ```
 
+# Create service without file .spec (--skipTests)
+```javascript
+ng generate service services/country --skipTests
+```
+or
+```javascript
+ng g s services/country --skipTests
+```
+
 # Server local
 install global ```sudo npm i -g http-server```
 
