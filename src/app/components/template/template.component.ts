@@ -14,8 +14,10 @@ export class TemplateComponent implements OnInit {
   user = {
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    country: ''
   }
+  countries: any[] = [];
 
   constructor(
     private countryService: CountryService
@@ -27,7 +29,13 @@ export class TemplateComponent implements OnInit {
     this.countryService.getCountries()
       .pipe(first())
       .subscribe(response => {
-        console.log(response);
+        this.countries = response;
+        // console.log(this.countries);
+
+        this.countries.unshift({
+          name: '[Selecciones un país]',
+          code: ''
+        });
       });
   }
 

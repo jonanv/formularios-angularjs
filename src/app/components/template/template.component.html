@@ -32,6 +32,15 @@
     </div>
 
     <div class="form-group row">
+        <label class="col-2 col-form-label">País</label>
+        <div class="col-8">
+            <select class="form-control" name="country" [ngModel]="user.country" required [disabled]="countries.length === 0">
+                <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
             <button type="submit" class="btn btn-outline-primary btn-block">
