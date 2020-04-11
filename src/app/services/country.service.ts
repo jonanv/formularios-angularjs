@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+// Imports
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +10,23 @@ import { Injectable } from '@angular/core';
 export class CountryService {
 
   // https://restcountries.eu/
-  // https://restcountries.eu/rest/v2/lang/es
+  apiUrl: string = 'https://restcountries.eu/rest/v2/'
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) {
+
+  }
+
+  private getQuery(query: string) {
+    const url = `${this.apiUrl}${query}`;
+    return this.http.get(url);
+  }
+
+  getCountries() {
+    return this.getQuery('lang/es')
+      .pipe(map((response: any[]) => {
+        return response.map(country => ({ name: country.name, code: country.alpha3Code }));
+      }));
+  }
 }
