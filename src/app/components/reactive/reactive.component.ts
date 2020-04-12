@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ReactiveComponent implements OnInit {
 
   formReactive: FormGroup;
+  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder
@@ -17,6 +18,18 @@ export class ReactiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  get getFirstName() {
+    return this.formReactive.get('firstName').invalid && this.formReactive.get('firstName').touched;
+  }
+
+  get getLastName() {
+    return this.formReactive.get('lastName').invalid && this.formReactive.get('lastName').touched;
+  }
+
+  get getEmail() {
+    return this.formReactive.get('email').invalid && this.formReactive.get('email').touched;
   }
 
   createForm() {
@@ -34,6 +47,7 @@ export class ReactiveComponent implements OnInit {
   }
 
   save() {
+    this.submitted = true;
     console.log(this.formReactive.value);
   }
 
