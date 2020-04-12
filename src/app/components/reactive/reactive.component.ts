@@ -48,6 +48,15 @@ export class ReactiveComponent implements OnInit {
 
   save() {
     this.submitted = true;
+
+    if (this.formReactive.invalid) {
+      Object.values(this.formReactive.controls)
+        .forEach(control => {
+          control.markAllAsTouched();
+        });
+      return;
+    }
+
     console.log(this.formReactive.value);
   }
 
