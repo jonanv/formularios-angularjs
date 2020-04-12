@@ -9,6 +9,7 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="firstName">
+                <!-- <span *ngIf="formTemplate.submitted && formTemplate.controls['firstName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span> -->
             </div>
         </div>
 
@@ -38,3 +39,16 @@
     </div>
 
 </form>
+
+
+<hr>
+
+<pre>
+  Estado del formulario: {{ formReactive.valid }}
+  <br>
+  Status: {{ formReactive.status }}
+</pre>
+
+<pre>
+  {{ formReactive.value | json }}
+</pre>
