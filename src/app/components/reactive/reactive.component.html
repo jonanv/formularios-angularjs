@@ -7,7 +7,7 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
-            <div class="col-8">
+            <div class="col">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="firstName" [class.is-invalid]="getFirstName">
                 <span *ngIf="getFirstName && formReactive.controls['firstName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
             </div>
@@ -15,7 +15,7 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Apellido</label>
-            <div class="col-8">
+            <div class="col">
                 <input class="form-control" type="text" placeholder="Apellido" formControlName="lastName" [class.is-invalid]="getLastName">
                 <span *ngIf="getLastName && formReactive.controls['lastName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
             </div>
@@ -25,15 +25,29 @@
 
     <div class="form-group row">
         <label class="col-2 col-form-label">Correo</label>
-        <div class="col-8">
+        <div class="col">
             <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="email" [class.is-invalid]="getEmail">
             <span *ngIf="getEmail && formReactive.controls['email'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">El correo es obligatorio</span>
         </div>
     </div>
 
+    <div class="form-group row" formGroupName="address">
+        <label class="col-2 col-form-label">Dirección</label>
+        <div class="form-row col">
+
+            <div class="col">
+                <input class="form-control" type="text" placeholder="Distrito" formControlName="district">
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" placeholder="Ciudad" formControlName="city">
+            </div>
+
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
+        <div class="input-group col">
             <button type="submit" class="btn btn-outline-primary btn-block">
               Guardar
             </button>
