@@ -32,6 +32,14 @@ export class ReactiveComponent implements OnInit {
     return this.formReactive.get('email').invalid && this.formReactive.get('email').touched;
   }
 
+  get getDistrict() {
+    return this.formReactive.get('address.district').invalid && this.formReactive.get('address.district').touched;
+  }
+
+  get getCity() {
+    return this.formReactive.get('address.city').invalid && this.formReactive.get('address.city').touched;
+  }
+
   createForm() {
     this.formReactive = this.formBuilder.group({
       firstName: ['', [
@@ -44,8 +52,8 @@ export class ReactiveComponent implements OnInit {
         Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
       ]],
       address: this.formBuilder.group({
-        district: [''],
-        city: ['']
+        district: ['', Validators.required],
+        city: ['', Validators.required]
       })
     });
   }
@@ -56,7 +64,16 @@ export class ReactiveComponent implements OnInit {
     if (this.formReactive.invalid) {
       Object.values(this.formReactive.controls)
         .forEach(control => {
-          control.markAllAsTouched();
+
+          if (control instanceof FormGroup) {
+            Object.values(control.controls)
+              .forEach(control => {
+                control.markAllAsTouched();
+              });
+          }
+          else {
+            control.markAllAsTouched();
+          }
         });
       return;
     }

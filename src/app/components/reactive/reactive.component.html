@@ -36,10 +36,13 @@
         <div class="form-row col">
 
             <div class="col">
-                <input class="form-control" type="text" placeholder="Distrito" formControlName="district">
+                <input class="form-control" type="text" placeholder="Distrito" formControlName="district" [class.is-invalid]="getDistrict">
+                <!-- <span *ngIf="getDistrict && formReactive.controls['address.district'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">El distrito es obligatorio</span> -->
+
             </div>
             <div class="col">
-                <input class="form-control" type="text" placeholder="Ciudad" formControlName="city">
+                <input class="form-control" type="text" placeholder="Ciudad" formControlName="city" [class.is-invalid]="getCity">
+                <!-- <span *ngIf="getCity && formReactive.controls['address.city'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">La ciudad es obligatorio</span> -->
             </div>
 
         </div>
