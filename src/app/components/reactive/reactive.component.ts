@@ -18,6 +18,7 @@ export class ReactiveComponent implements OnInit {
   ) {
     this.createForm();
     this.chargeDataForm();
+    this.createListeners();
   }
 
   ngOnInit(): void {
@@ -89,6 +90,23 @@ export class ReactiveComponent implements OnInit {
     });
   }
 
+  createListeners() {
+    // this.formReactive.valueChanges
+    //   .subscribe(response => {
+    //     console.log(response);
+    //   });
+
+    // this.formReactive.statusChanges
+    //   .subscribe(response => {
+    //     console.log(response);
+    //   });
+
+    this.formReactive.get('firstName').valueChanges
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
+
   chargeDataForm() {
     // this.formReactive.setValue({
     this.formReactive.reset({
@@ -102,7 +120,7 @@ export class ReactiveComponent implements OnInit {
         city: "Manizales"
       }
     });
-    ['Programar', 'Jugar'].forEach( valor => this.getHobbies.push(this.formBuilder.control(valor) ));
+    ['Programar', 'Jugar'].forEach(valor => this.getHobbies.push(this.formBuilder.control(valor)));
   }
 
   hobbie() {
