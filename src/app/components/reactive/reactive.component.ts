@@ -35,6 +35,10 @@ export class ReactiveComponent implements OnInit {
     return this.formReactive.get('email').invalid && this.formReactive.get('email').touched;
   }
 
+  get getUser() {
+    return this.formReactive.get('user').invalid && this.formReactive.get('user').touched;
+  }
+
   get getPassword1() {
     return this.formReactive.get('password1').invalid && this.formReactive.get('password1').touched;
   }
@@ -72,6 +76,7 @@ export class ReactiveComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
       ]],
+      user: ['', Validators.required, this.validatorsService.userExist],
       password1: ['', Validators.required],
       password2: ['', Validators.required],
       address: this.formBuilder.group({
@@ -88,8 +93,10 @@ export class ReactiveComponent implements OnInit {
     // this.formReactive.setValue({
     this.formReactive.reset({
       firstName: "Giovanni",
-      lastName: "Vargas",
+      lastName: "Gonzalez",
       email: "jonan-vargas23@hotmail.com",
+      password1: '123',
+      password2: '123',
       address: {
         district: "Caldas",
         city: "Manizales"
