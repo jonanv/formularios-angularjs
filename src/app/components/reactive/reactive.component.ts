@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ValidatorsService } from '../../services/validators.service';
 
 @Component({
   selector: 'app-reactive',
@@ -12,7 +13,8 @@ export class ReactiveComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private validatorsService: ValidatorsService
   ) {
     this.createForm();
     this.chargeDataForm();
@@ -51,7 +53,10 @@ export class ReactiveComponent implements OnInit {
         Validators.required,
         Validators.minLength(5)
       ]],
-      lastName: ['', Validators.required],
+      lastName: ['', [
+        Validators.required,
+        this.validatorsService.noVargas
+      ]],
       email: ['', [
         Validators.required,
         Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")

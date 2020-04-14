@@ -17,7 +17,7 @@
             <label class="col-2 col-form-label">Apellido</label>
             <div class="col">
                 <input class="form-control" type="text" placeholder="Apellido" formControlName="lastName" [class.is-invalid]="getLastName">
-                <span *ngIf="getLastName && formReactive.controls['lastName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese 5 letras</span>
+                <span *ngIf="getLastName && formReactive.controls['lastName'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">Ingrese apellido</span>
             </div>
         </div>
 
