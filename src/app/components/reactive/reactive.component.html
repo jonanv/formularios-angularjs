@@ -37,13 +37,41 @@
 
             <div class="col">
                 <input class="form-control" type="text" placeholder="Distrito" formControlName="district" [class.is-invalid]="getDistrict">
-                <!-- <span *ngIf="getDistrict && formReactive.controls['address.district'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">El distrito es obligatorio</span> -->
-
+                <span *ngIf="getDistrict" class="badge badge-pill badge-danger d-block text-left mt-1">El distrito es obligatorio</span>
             </div>
             <div class="col">
                 <input class="form-control" type="text" placeholder="Ciudad" formControlName="city" [class.is-invalid]="getCity">
-                <!-- <span *ngIf="getCity && formReactive.controls['address.city'].errors" class="badge badge-pill badge-danger d-block text-left mt-1">La ciudad es obligatorio</span> -->
+                <span *ngIf="getCity" class="badge badge-pill badge-danger d-block text-left mt-1">La ciudad es obligatorio</span>
             </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Pasatiempo</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="hobbies">
+                    <tr *ngFor="let hobbie of getHobbies.controls; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>
+                            <input class="form-control" type="text" [formControlName]="i">
+                        </td>
+                        <td>
+                            <button class="btn btn-danger">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-primary btn-block mt-3 mb-5" type="button">+ Agregar</button>
 
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -41,6 +41,10 @@ export class ReactiveComponent implements OnInit {
     return this.formReactive.get('address.city').invalid && this.formReactive.get('address.city').touched;
   }
 
+  get getHobbies() {
+    return this.formReactive.get('hobbies') as FormArray;
+  }
+
   createForm() {
     this.formReactive = this.formBuilder.group({
       firstName: ['', [
@@ -55,12 +59,16 @@ export class ReactiveComponent implements OnInit {
       address: this.formBuilder.group({
         district: ['', Validators.required],
         city: ['', Validators.required]
-      })
+      }),
+      hobbies: this.formBuilder.array([
+        [''], [''], [''], [''], ['']
+      ])
     });
   }
 
   chargeDataForm() {
-    this.formReactive.setValue({
+    // this.formReactive.setValue({
+    this.formReactive.reset({
       firstName: "Giovanni",
       lastName: "Vargas",
       email: "jonan-vargas23@hotmail.com",
