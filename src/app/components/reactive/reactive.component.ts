@@ -15,6 +15,7 @@ export class ReactiveComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.createForm();
+    this.chargeDataForm();
   }
 
   ngOnInit(): void {
@@ -58,6 +59,18 @@ export class ReactiveComponent implements OnInit {
     });
   }
 
+  chargeDataForm() {
+    this.formReactive.setValue({
+      firstName: "Giovanni",
+      lastName: "Vargas",
+      email: "jonan-vargas23@hotmail.com",
+      address: {
+        district: "Caldas",
+        city: "Manizales"
+      }
+    });
+  }
+
   save() {
     this.submitted = true;
 
@@ -79,6 +92,15 @@ export class ReactiveComponent implements OnInit {
     }
 
     console.log(this.formReactive.value);
+    this.formReactive.reset({
+      firstName: "",
+      lastName: "",
+      email: "",
+      address: {
+        district: "",
+        city: ""
+      }
+    });
   }
 
 }
