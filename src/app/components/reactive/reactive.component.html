@@ -65,13 +65,15 @@
                             <input class="form-control" type="text" [formControlName]="i">
                         </td>
                         <td>
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button class="btn btn-danger" (click)="deleteHobbie(i)">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <button class="btn btn-primary btn-block mt-3 mb-5" type="button">+ Agregar</button>
+            <button class="btn btn-primary btn-block mt-3 mb-5" type="button" (click)="hobbie()">
+              + Agregar
+            </button>
 
         </div>
     </div>

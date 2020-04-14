@@ -60,9 +60,7 @@ export class ReactiveComponent implements OnInit {
         district: ['', Validators.required],
         city: ['', Validators.required]
       }),
-      hobbies: this.formBuilder.array([
-        [''], [''], [''], [''], ['']
-      ])
+      hobbies: this.formBuilder.array([])
     });
   }
 
@@ -77,6 +75,16 @@ export class ReactiveComponent implements OnInit {
         city: "Manizales"
       }
     });
+  }
+
+  hobbie() {
+    this.getHobbies.push(
+      this.formBuilder.control('', Validators.required)
+    );
+  }
+
+  deleteHobbie(index: number) {
+    this.getHobbies.removeAt(index);
   }
 
   save() {
