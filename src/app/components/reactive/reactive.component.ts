@@ -35,6 +35,17 @@ export class ReactiveComponent implements OnInit {
     return this.formReactive.get('email').invalid && this.formReactive.get('email').touched;
   }
 
+  get getPassword1() {
+    return this.formReactive.get('password1').invalid && this.formReactive.get('password1').touched;
+  }
+
+  get getPassword2() {
+    const password1 = this.formReactive.get('password1').value;
+    const password2 = this.formReactive.get('password2').value;
+
+    return (password1 === password2) ? false : true;
+  }
+
   get getDistrict() {
     return this.formReactive.get('address.district').invalid && this.formReactive.get('address.district').touched;
   }
@@ -61,11 +72,15 @@ export class ReactiveComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
       ]],
+      password1: ['', Validators.required],
+      password2: ['', Validators.required],
       address: this.formBuilder.group({
         district: ['', Validators.required],
         city: ['', Validators.required]
       }),
       hobbies: this.formBuilder.array([])
+    }, {
+      validators: this.validatorsService.passwordsEquals('password1', 'password2')
     });
   }
 
