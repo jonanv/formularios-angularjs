@@ -75,6 +75,7 @@ export class ReactiveComponent implements OnInit {
         city: "Manizales"
       }
     });
+    ['Programar', 'Jugar'].forEach( valor => this.getHobbies.push(this.formBuilder.control(valor) ));
   }
 
   hobbie() {
